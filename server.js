@@ -12,43 +12,69 @@ app.use(express.json());
 
 const reservations = [
   {
-    name: "test",
-    phone: "425-555-5555",
-    email: "123@gmail.com",
-    uniqueId: "1"
-  }
-];
-const waitList = [
+    name: "sdf",
+    phone: "sdfsd",
+    email: "sdfsdf",
+    uniqueId: "sdsdf"
+  },
   {
-    name: "test1",
-    phone: "425-555-5555",
-    email: "123@gmail.com",
-    uniqueId: "1"
+    name: "sdf",
+    phone: "sdfsd",
+    email: "sdfsdf",
+    uniqueId: "sdsdf"
+  },
+  {
+    name: "sdf",
+    phone: "sdfsd",
+    email: "sdfsdf",
+    uniqueId: "sdsdf"
+  },
+  {
+    name: "sdf",
+    phone: "sdfsd",
+    email: "sdfsdf",
+    uniqueId: "sdsdf"
+  },
+  {
+    name: "sdf",
+    phone: "sdfsd",
+    email: "sdfsdf",
+    uniqueId: "sdsdf"
   }
 ];
+const waitList = [];
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
+
 app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
+
 app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
+
 // Displays all tables
 app.get("/api/tables", function(req, res) {
-  return res.json(tables);
+  return res.json(reservations);
 });
 
-app.post("/api/waitList", function(req, res) {
+app.get("/api/waitlist", function(req, res) {
+  return res.json(waitList);
+});
+
+app.post("/api/tables", function(req, res) {
   const newReservation = req.body;
-  newReservation.routeName = newReservation.name
-    .replace(/\s+/g, "")
-    .toLowerCase();
   console.log(newReservation);
-  reservations.push(newReservation);
-  res.json(newReservation);
+  if (reservations.length < 5) {
+    reservations.push(newReservation);
+    res.json(newReservation);
+  } else {
+    waitList.push(newReservation);
+    res.json(null)
+  }
 });
 
 app.listen(PORT, function() {
