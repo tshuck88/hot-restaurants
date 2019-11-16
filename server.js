@@ -10,7 +10,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const reservations = [
+let reservations = [
   {
     customerName: "sdf",
     phoneNumber: "sdfsd",
@@ -68,6 +68,17 @@ app.post("/api/tables", function(req, res) {
   } else {
     waitList.push(newReservation);
     res.json(null);
+  }
+});
+
+app.post("/api/update", function(req, res) {
+  reservations = reservations.filter(function(reservation) {
+    return reservation.customerID !== req.body.customerID;
+  });
+
+  if (waitList.length !== 0) {
+    let moveWaitList = waitList.shift();
+    reservations.push(moveWaitList);
   }
 });
 
