@@ -12,34 +12,28 @@ app.use(express.json());
 
 const reservations = [
   {
-    name: "sdf",
-    phone: "sdfsd",
-    email: "sdfsdf",
-    uniqueId: "sdsdf"
+    customerName: "sdf",
+    phoneNumber: "sdfsd",
+    customerEmail: "sdfsdf",
+    customerID: "sdsdf"
   },
   {
-    name: "sdf",
-    phone: "sdfsd",
-    email: "sdfsdf",
-    uniqueId: "sdsdf"
+    customerName: "sdf",
+    phoneNumber: "sdfsd",
+    customerEmail: "sdfsdf",
+    customerID: "sdsdf"
   },
   {
-    name: "sdf",
-    phone: "sdfsd",
-    email: "sdfsdf",
-    uniqueId: "sdsdf"
+    customerName: "sdf",
+    phoneNumber: "sdfsd",
+    customerEmail: "sdfsdf",
+    customerID: "sdsdf"
   },
   {
-    name: "sdf",
-    phone: "sdfsd",
-    email: "sdfsdf",
-    uniqueId: "sdsdf"
-  },
-  {
-    name: "sdf",
-    phone: "sdfsd",
-    email: "sdfsdf",
-    uniqueId: "sdsdf"
+    customerName: "sdf",
+    phoneNumber: "sdfsd",
+    customerEmail: "sdfsdf",
+    customerID: "sdsdf"
   }
 ];
 const waitList = [];
@@ -73,7 +67,7 @@ app.post("/api/tables", function(req, res) {
     res.json(newReservation);
   } else {
     waitList.push(newReservation);
-    res.json(null)
+    res.json(null);
   }
 });
 
