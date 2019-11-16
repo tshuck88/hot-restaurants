@@ -10,8 +10,22 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const reservations = [{ name: "test" }];
-const waitList = [{ name: "test1" }];
+const reservations = [
+  {
+    name: "test",
+    phone: "425-555-5555",
+    email: "123@gmail.com",
+    uniqueId: "1"
+  }
+];
+const waitList = [
+  {
+    name: "test1",
+    phone: "425-555-5555",
+    email: "123@gmail.com",
+    uniqueId: "1"
+  }
+];
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
@@ -29,10 +43,12 @@ app.get("/api/tables", function(req, res) {
 
 app.post("/api/waitList", function(req, res) {
   const newReservation = req.body;
-  newCharacter.routeName = newCharacter.name.replace(/\s+/g, "").toLowerCase();
-  console.log(newCharacter);
-  characters.push(newCharacter);
-  res.json(newCharacter);
+  newReservation.routeName = newReservation.name
+    .replace(/\s+/g, "")
+    .toLowerCase();
+  console.log(newReservation);
+  reservations.push(newReservation);
+  res.json(newReservation);
 });
 
 app.listen(PORT, function() {
