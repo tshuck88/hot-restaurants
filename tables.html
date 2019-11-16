@@ -113,6 +113,7 @@
                     var listItem = $("<li class='list-group-item mt-4'>");
 
                     listItem.append(
+                        $("<h2>").html("<button type='button' class='btn btn -default btn - sm'><span class='glyphicon glyphicon-minus' id=waitData[i].customerID aria-hidden='true'></span></button>"),
                         $("<h2>").text("Table #" + (i + 1)),
                         $("<hr>"),
                         $("<h2>").text("ID: " + waitData[i].customerID),
